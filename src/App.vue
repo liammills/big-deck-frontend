@@ -1,37 +1,29 @@
 <template>
-  <q-layout>
-
-    <Header />
-
-    
-
-    <q-page-container>
-      <GameInAction />
-    </q-page-container>
-  </q-layout>
+  <!-- <div id="nav">
+    <router-link to="/">Home</router-link> |
+    <router-link to="/about">About</router-link>
+  </div> -->
+  <router-view/>
 </template>
 
-<script>
-import { ref } from 'vue'
-import Header from './components/Header.vue'
-import GameInAction from './components/GameInAction.vue'
+<style lang="scss">
+#app {
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: #2c3e50;
+}
 
-export default {
-  name: 'LayoutDefault',
+#nav {
+  padding: 30px;
 
-  components: {
-    GameInAction,
-    Header,
-  },
+  a {
+    font-weight: bold;
+    color: #2c3e50;
 
-  setup () {
-    return {
-      leftDrawerOpen: ref(false)
+    &.router-link-exact-active {
+      color: #42b983;
     }
   }
 }
-</script>
-
-<style lang="sass">
-
 </style>

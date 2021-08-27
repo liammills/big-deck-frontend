@@ -1,15 +1,18 @@
 <template>
-  <q-page class="q-mt-xl flex flex-center column">
-    <div class="">
-        <div class="text-h2 q-mb-xl q-mt-xl">
+  <q-page :loading="loading" class="q-mt-xl flex flex-center column">
+    <div>
+        <div class="text-h2 q-mb-lg q-mt-xl">
             {{question}}
         </div>
-        <div v-if="totalPlayers" class="text-h4 flex column text-center q-mb-xl">
+        <div v-if="totalPlayers" class="text-h4 flex column text-center text-weight-light">
             <span>{{playersRemaining}}/{{totalPlayers}} players done</span>
             <span>{{secondsRemaining}} seconds remaining</span>
         </div>
     </div>
-    <div class="q-my-xl flex q-gutter-xl items-center justify-center content-center">
+    <q-inner-loading v-if="loading" showing>
+        <q-spinner-puff size="xl" color="primary" />
+    </q-inner-loading>
+    <div class="q-my-md flex q-gutter-xl items-center justify-center content-center">
         <q-card
           v-ripple
           v-for="card in cards"
@@ -21,7 +24,13 @@
         </q-card>
     </div>
 
-    <q-btn outline rounded color="primary" label="Submit" style="width: 300px" class="text-h6 q-mt-lg q-mx-auto q-mb-auto" />
+    <q-btn
+        rounded
+        color="primary"
+        label="Submit"
+        style="width: 300px; font-family: 'Luckiest Guy', cursive; font-size: 32px; padding-top: 12px;"
+        class="text-h6 q-mt-xl q-mx-auto q-mb-xl"
+    />
     
   </q-page>
 </template>
@@ -46,13 +55,29 @@ export default {
               {message: 'gfbxbgsry'},
               {message: 'gfbxbgsry'},
               {message: 'gfbxbgsry'},
-          ]
+          ],
+          loading: true,
+      }
+  },
+  async mounted() {
+      this.loading = true;
+      try {
+        await Promise(this.waitLoad());
+      } finally {
+        this.loading = false;
+      }
+  },
+  methods: {
+      async waitLoad() {
+          await new Promise(r => setTimeout(r, 3000));
+          console.log('asdoasd'); // TO DELETE
       }
   }
 }
 </script>
 
 <style lang="sass">
+    @import url('https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap')
     .card-bg
         border: 4px solid transparent
     .card-bg:hover

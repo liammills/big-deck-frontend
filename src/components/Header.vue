@@ -2,13 +2,16 @@
     <q-header elevated class="header">
       <q-toolbar class="q-px-xl">
 
-        <q-toolbar-title class="q-pa-none">
+        <q-toolbar-title
+            class="q-pa-none cursor-pointer"
+            @click="$router.push('/')"
+        >
             <div class="logo">
                 Big Deck
             </div>
         </q-toolbar-title>
 
-        <div>7FD877</div>
+        <div v-if="id">{{id}}</div>
       </q-toolbar>
     </q-header>
 </template>
@@ -18,7 +21,12 @@
 
 <script>
 export default {
-  name: 'Header'
+  name: 'Header',
+  props: {
+      id: {
+          type: String,
+      }
+  },
 }
 </script>
 
