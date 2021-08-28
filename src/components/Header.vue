@@ -3,15 +3,31 @@
       <q-toolbar class="q-px-xl">
 
         <q-toolbar-title
-            class="q-pa-none cursor-pointer"
-            @click="$router.push('/')"
+            class="q-pa-none"
         >
-            <div class="logo">
+            <div
+                class="logo cursor-pointer"
+                @click="$router.push('/')"
+            >
                 Big Deck
             </div>
         </q-toolbar-title>
 
-        <div v-if="id">{{id}}</div>
+        <div
+            v-if="id"
+            class="cursor-pointer"
+            @click="copy"
+        >
+            <span class="id-text">{{id}}</span>
+            <q-popup-proxy>
+                <q-banner>
+                <template v-slot:avatar>
+                    <q-icon name="assignment" color="primary" />
+                </template>
+                    Game ID copied to clipboard.
+                </q-banner>
+            </q-popup-proxy>
+        </div>
       </q-toolbar>
     </q-header>
 </template>
@@ -20,6 +36,8 @@
 </style>
 
 <script>
+import { copyToClipboard } from 'quasar'
+
 export default {
   name: 'Header',
   props: {
@@ -27,6 +45,17 @@ export default {
           type: String,
       }
   },
+  methods: {
+      copy() {
+        copyToClipboard(this.id)
+            .then(() => {
+                console.log('id copied');
+            })
+            .catch((e) => {
+                console.log(e);
+            })
+      }
+  }
 }
 </script>
 
@@ -42,4 +71,6 @@ export default {
     color: #F22771
     padding: 0px
     margin: 0px
+  .id-text:hover
+    text-decoration: underline
 </style>
