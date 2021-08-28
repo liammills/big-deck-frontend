@@ -11,7 +11,7 @@
           v-ripple
           color="primary"
           label="Create a game"
-          @click="$router.push('game')"
+          @click="$router.push('lobby')"
           style="width: 300px; font-family: 'Luckiest Guy', cursive; font-size: 32px; padding-top: 12px;"
           class="text-h6 q-mr-xl"
       />

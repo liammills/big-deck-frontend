@@ -53,15 +53,12 @@
     </div>
 
     <div class="q-my-md flex q-gutter-xl items-center justify-center content-center">
-        <q-card
-          v-ripple
+        <GameCard
           v-for="card in cards"
           :key="card.message"
-          class="q-pa-lg text-h5 card-bg cursor-pointer q-hoverable scroll"
-          style="width: 20%; height: 200px; background-color: #c4c4c4"
-        >
-            {{card.message}}
-        </q-card>
+          style="width: 20%; height: 200px"
+          :message="card.message"
+        />
     </div>
 
     <q-btn
@@ -82,26 +79,34 @@
 </style>
 
 <script>
+import GameCard from './GameCard.vue';
+
 export default {
   name: 'GameInAction',
+  components: {
+    GameCard,
+  },
   data() {
       return {
-          question: "Question with a _____ spot",
+          question: "Two things in life are inevitable. Death and ______",
           playersRemaining: 4,
           totalPlayers: 8,
           secondsRemaining: 60,
           cards: [
-              {message: "You think water moves fast? You should see ice."},
-              {message: "Now that there is the Tec-9, a crappy spray gun from South Miami."},
-              {message: "Motherfucker do that shit to me, he better paralyze my ass, 'cause I'll kill the motherfucker, know what I'm sayin'?"},
-              {message: "Your bones don't break, mine do."},
-              {message: "Now that we know who you are, I know who I am."},
-              {message: "Look, just because I don't be givin' no man a foot massage"},
-              {message: "Some pilots get picked and become television programs."},
+              {message: "A cold and indifferent universe"},
+              {message: "Antidepressants"},
+              {message: "Winning SYNCS HACK"},
+              {message: "White people"},
+              {message: "Listening to her problems without trying to solve them"},
+              {message: "Getting married, having a few kids, buying some stuff, retiring to Florida, and dying."},
+              {message: "Former president George W Bush"},
           ],
           loadingSubmit: false,
           runTimer: false,
       }
+  },
+  mounted() {
+      this.runTimer = true;
   },
   methods: {
       simulateProgress () {
@@ -113,21 +118,20 @@ export default {
       },
       startTimer() {
           this.runTimer = true;
-      }
+      },
   },
   watch: {
     secondsRemaining: {
         handler(value) {
-            if (this.runTimer == true && value > 0) {
+            if (value > 0) {
+                // (this.runTimer == true) && 
                 setTimeout(() => {
                     this.secondsRemaining--;
                 }, 1000);
             }
-
         },
         immediate: true // This ensures the watcher is triggered upon creation
     }
-
 }
 }
 </script>
@@ -137,7 +141,5 @@ export default {
     .card-bg
         border: 4px solid transparent
     .card-bg:hover
-        border: 4px solid #F22771
-    .card-bg:active
-        border: 4px solid red
+        border: 4px solid #7FD877
 </style>

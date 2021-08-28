@@ -33,14 +33,12 @@
     
     <q-btn
         rounded
-        :loading="loadingSubmit"
         color="primary"
         label="Start game"
         dense
         push
         v-ripple
-        :disabled="users.length < 2"
-        @click="simulateProgress()"
+        @click="$router.push('/game')"
         style="width: 300px; font-family: 'Luckiest Guy', cursive; font-size: 32px; padding-top: 18px;"
         class="text-h6 q-mt-xl"
     />

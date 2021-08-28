@@ -5,3 +5,5 @@ import quasarUserOptions from './quasar-user-options'
 import router from './router'
 
 createApp(App).use(router).use(Quasar, quasarUserOptions).mount('#app')
+
+// INDEX.HTML HERE
