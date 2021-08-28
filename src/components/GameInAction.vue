@@ -39,14 +39,14 @@
         <div class="col q-gutter-lg">
             <q-icon
                 name="leaderboard"
-                color="secondary"
-                size=42px
+                color="blue-grey-6"
+                size=36px
                 class="cursor-pointer"
             />
             <q-icon
                 name="settings"
-                color="secondary"
-                size=42px
+                color="blue-grey-6"
+                size=36px
                 class="cursor-pointer"
             />
         </div>
@@ -94,10 +94,10 @@ export default {
               {message: "You think water moves fast? You should see ice."},
               {message: "Now that there is the Tec-9, a crappy spray gun from South Miami."},
               {message: "Motherfucker do that shit to me, he better paralyze my ass, 'cause I'll kill the motherfucker, know what I'm sayin'?"},
-              {message: 'gfbxbgsry'},
-              {message: 'gfbxbgsry'},
-              {message: 'gfbxbgsry'},
-              {message: 'gfbxbgsry'},
+              {message: "Your bones don't break, mine do."},
+              {message: "Now that we know who you are, I know who I am."},
+              {message: "Look, just because I don't be givin' no man a foot massage"},
+              {message: "Some pilots get picked and become television programs."},
           ],
           loadingSubmit: false,
           runTimer: false,
