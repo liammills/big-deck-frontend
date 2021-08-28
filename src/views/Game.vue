@@ -6,7 +6,6 @@
 
     <q-page-container v-show="!loading">
       <GameInAction />
-      <!-- <GameLobby v-else /> -->
     </q-page-container>
 
     <q-inner-loading :showing="loading" >
@@ -18,14 +17,12 @@
 <script>
 import Header from '@/components/Header.vue'
 import GameInAction from '@/components/GameInAction.vue'
-// import GameLobby from '@/components/GameLobby.vue'
 
 export default {
   name: 'Game',
   components: {
     GameInAction,
     Header,
-    // GameLobby,
   },
   data() {
     return {

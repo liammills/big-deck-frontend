@@ -34,6 +34,7 @@
         <div class="col-6">
             <div class="text-h2 q-mb-lg q-mt-xs">
                 {{question}}
+                <!-- <span v-if="chosenCard" class="text-italic text-h3">{{chosenCard.message}}</span> -->
             </div>
         </div>
         <div class="col q-gutter-lg">
@@ -58,6 +59,8 @@
           :key="card.message"
           style="width: 20%; height: 200px"
           :message="card.message"
+          :isClicked="chosenCard.message === card.message ? true : false"
+          @click="chosenCard = card"
         />
     </div>
 
@@ -93,7 +96,7 @@ export default {
           totalPlayers: 8,
           secondsRemaining: 60,
           cards: [
-              {message: "A cold and indifferent universe"},
+              {message: "A cold and indifferent universe", id: 1},
               {message: "Antidepressants"},
               {message: "Winning SYNCS HACK"},
               {message: "White people"},
@@ -101,6 +104,9 @@ export default {
               {message: "Getting married, having a few kids, buying some stuff, retiring to Florida, and dying."},
               {message: "Former president George W Bush"},
           ],
+          chosenCard: {
+              message: null,
+          },
           loadingSubmit: false,
           runTimer: false,
       }
